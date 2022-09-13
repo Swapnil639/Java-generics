@@ -2,17 +2,26 @@ package com.bridgelabz;
 
 import java.util.Arrays;
 
-public class Maximum {
-    public static <T> T testCase(T... a) {
+public class Maximum<T> {
+
+    public T testCase(T... a) {
         Arrays.sort(a);
-        return a[a.length - 1];
+        T max = a[a.length - 1];
+        printMax(max);
+        return max;
+    }
+
+    private void printMax(T max) {
+        System.out.println(max);
+
     }
 
     public static void main(String[] args) {
-        System.out.println("Welcome Generics program to find maximum");
-        System.out.println("Maximum of Integer values is :" + testCase(2, 8, 9, 102, 6, 9, 23, 56, 95));//more than 3 variables
-        System.out.println("Maximum of Float Values is :" + testCase(2.6f, 5.6f, 2.8f, 8.9f, 10.6f));
-        System.out.println("Maximum of String values is :" + testCase("Apple", "Bird", "Juice", "Dog", "Elephant", "Fox", "Goat"));
-
+        Maximum<Integer> maximumInteger = new Maximum<>();
+        Maximum<Float> maximumFloat = new Maximum<>();
+        Maximum<String> maximumString = new Maximum<>();
+        maximumInteger.testCase(2, 9, 98, -2, 8, 7, 987, 765);
+        maximumFloat.testCase(3.9f, 89.8f, 876.6f, 876.6f, 999.8f, 5.7f, 4.5f);
+        maximumString.testCase("Apple", "Banana", "Juice", "Sink", "Cat", "Elephant");
     }
 }
